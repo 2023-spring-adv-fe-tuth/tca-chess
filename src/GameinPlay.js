@@ -2,6 +2,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 import './styles.css';
 
 function GameinPlay() {
@@ -19,69 +20,66 @@ function GameinPlay() {
                 <Col className="col">
                     <h2>First Move</h2>
                     <Form>
-                    {['radio'].map((type) => (
-                        <div key={`E4`} className="mb-3">
-                        <Form.Check 
-                            type={type}
-                            id={`E4`}
-                            label={`E4`}
-                        />
+                        <Form.Group>
+                            <Form.Check 
+                                type="checkbox"
+                                id={`E4`}
+                                label={`E4`}
+                            />
 
-                        <Form.Check
-                            type={type}
-                            label={`B4`}
-                            id={`B4`}
-                        />
-                        </div>
-                    ))}
+                            <Form.Check
+                                type="checkbox"
+                                label={`B4`}
+                                id={`B4`}
+                            />
+                        </Form.Group>
                     </Form>
                 </Col>
                 <Col className="col">
                 <h2>1st piece captured</h2>
                     <Form>
-                    {['radio'].map((type) => (
-                        <div key={`Pawn`} className="mb-3">
-                        <Form.Check 
-                            type={type}
-                            id={`Pawn`}
-                            label={`Pawn`}
-                        />
+                        <Form.Group>
+                            <Form.Check 
+                                type="checkbox"
+                                id={`pawn`}
+                                label={`pawn`}
+                            />
 
-                        <Form.Check
-                            type={type}
-                            label={`Knight`}
-                            id={`Knight`}
-                        />
+                            <Form.Check
+                                type="checkbox"
+                                label={`knight`}
+                                id={`knight`}
+                            />
 
-                        <Form.Check
-                            type={type}
-                            label={`Rook`}
-                            id={`Rook`}
-                        />
+                            <Form.Check
+                                type="checkbox"
+                                label={`rook`}
+                                id={`rook`}
+                            />
 
-                        <Form.Check
-                            type={type}
-                            label={`Bishop`}
-                            id={`Bishop`}
-                        />
+                            <Form.Check
+                                type="checkbox"
+                                label={`bishop`}
+                                id={`bishop`}
+                            />
 
-                        <Form.Check
-                            type={type}
-                            label={`Queen`}
-                            id={`Queen`}
-                        />
+                            <Form.Check
+                                type="checkbox"
+                                label={`queen`}
+                                id={`queen`}
+                            />
 
-                        <Form.Check
-                            type={type}
-                            label={`Castle`}
-                            id={`Castle`}
-                        />
-                        </div>
-                    ))}
+                            <Form.Check
+                                type="checkbox"
+                                label={`castle`}
+                                id={`castle`}
+                            />
+                        </Form.Group>
                     </Form>
                 </Col>
             </Row>
         </Container>
+        
         <Container fluid className="container">
 
             <Row className="row">
@@ -94,68 +92,85 @@ function GameinPlay() {
                 <Col className="col">
                     <h2>First Move</h2>
                     <Form>
-                    {['radio'].map((type) => (
-                        <div key={`E4`} className="mb-3">
-                        <Form.Check 
-                            type={type}
-                            id={`E4`}
-                            label={`E4`}
-                        />
+                        <Form.Group>
+                            <Form.Check 
+                                type="checkbox"
+                                id={`E4`}
+                                label={`E4`}
+                            />
 
-                        <Form.Check
-                            type={type}
-                            label={`B4`}
-                            id={`B4`}
-                        />
-                        </div>
-                    ))}
+                            <Form.Check
+                                type="checkbox"
+                                label={`B4`}
+                                id={`B4`}
+                            />
+                        </Form.Group>
                     </Form>
                 </Col>
                 <Col className="col">
                 <h2>1st piece captured</h2>
                     <Form>
-                    {['radio'].map((type) => (
-                        <div key={`Pawn`} className="mb-3">
-                        <Form.Check 
-                            type={type}
-                            id={`Pawn`}
-                            label={`Pawn`}
-                        />
+                        <Form.Group>
+                            <Form.Check 
+                                type="checkbox"
+                                id={`pawn`}
+                                label={`pawn`}
+                            />
 
-                        <Form.Check
-                            type={type}
-                            label={`Knight`}
-                            id={`Knight`}
-                        />
+                            <Form.Check
+                                type="checkbox"
+                                label={`knight`}
+                                id={`knight`}
+                            />
 
-                        <Form.Check
-                            type={type}
-                            label={`Rook`}
-                            id={`Rook`}
-                        />
+                            <Form.Check
+                                type="checkbox"
+                                label={`rook`}
+                                id={`rook`}
+                            />
 
-                        <Form.Check
-                            type={type}
-                            label={`Bishop`}
-                            id={`Bishop`}
-                        />
+                            <Form.Check
+                                type="checkbox"
+                                label={`bishop`}
+                                id={`bishop`}
+                            />
 
-                        <Form.Check
-                            type={type}
-                            label={`Queen`}
-                            id={`Queen`}
-                        />
+                            <Form.Check
+                                type="checkbox"
+                                label={`queen`}
+                                id={`queen`}
+                            />
 
-                        <Form.Check
-                            type={type}
-                            label={`Castle`}
-                            id={`Castle`}
-                        />
-                        </div>
-                    ))}
+                            <Form.Check
+                                type="checkbox"
+                                label={`castle`}
+                                id={`castle`}
+                            />
+                        </Form.Group>
                     </Form>
                 </Col>
             </Row>
+        </Container>
+
+        <Container fluid className="container">
+            <Row className="row">
+                <Col className="col">
+                    <h2>Checkmate!</h2>
+                </Col>
+            </Row>  
+            <Row className="row">
+                <Col className="col">
+                    <Button variant="secondary">Player One Won</Button>
+                </Col>
+                <Col className="col">
+                    <Button variant="secondary">Opponent Won</Button>
+                </Col>
+            </Row>   
+            <Row className="row">
+                <Col className="col">
+                    <Button variant="secondary">Draw</Button>
+                </Col>
+            </Row>         
         </Container>
     </>
     );
