@@ -1,25 +1,16 @@
-import Container from 'react-bootstrap/Container';
+import './App.css';
+import './styles.css';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
-import { useState } from 'react';
-import ReactDOM from 'react-dom/client';
-import { Link } from 'react-router-dom';
+import Container from 'react-bootstrap/Container';
 
-import './styles.css';
+
 
 function Home() {
 
-    const [inputs, setInputs] = useState({});
-
-    const handleChange = (event) => {
-        const name = event.target.name;
-        const value = event.target.value;
-        setInputs(values => ({...values, [name]: value}));
-        console.log(inputs);
-    }
-    return(
-    <>
+  return (
+        <>
         <Container fluid className="container">
 
             <Row className="row">
@@ -37,33 +28,29 @@ function Home() {
                             <input 
                                 type="text" 
                                 name="username" 
-                                value={inputs.username || ""} 
-                                onChange={handleChange}
+                                id="username"
                             />
                             <Form.Label>Which pieces are you playing with?</Form.Label>
                             <Form.Check
                                 type="checkbox"
                                 label={`White`}
                                 name="white"
-                                value={inputs.white || ""}
-                                onChange={handleChange}
+                                id="white"
+                                value="white"
                             />
 
                             <Form.Check
                                 type="checkbox"
                                 label={`Black`}
                                 name="black"
-                                value={inputs.black}
-                                onChange={handleChange}
+                                id="black"
+                                value="black"
                             />
                         </Form.Group>
                         
-                         <Link to="/GameinPlay">
-                            <button type="submit">
-                                Start Game!
-                            </button>
-                        </Link>
-
+                          <button>
+                            Start Game
+                          </button> 
                     </Form>
                 </Col>
             </Row>
@@ -96,11 +83,9 @@ function Home() {
                 </Col>
             </Row>
         </Container>
-    </>
+      </>
     );
+  
 }
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Home />);
 
 export default Home;

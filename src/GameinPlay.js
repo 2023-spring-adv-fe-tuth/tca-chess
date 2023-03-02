@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import './styles.css';
 
 function GameinPlay() {
+
     return(
     <>
         <Container fluid className="container">
