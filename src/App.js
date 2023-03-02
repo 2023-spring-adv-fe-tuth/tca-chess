@@ -11,7 +11,7 @@ function App() {
         <>
         <HashRouter>
           <Routes>
-            <Route path="/Home" element={<Home/>}/>
+            <Route path="/" element={<Home/>}/>
             <Route path="/GameinPlay" element={<GameinPlay/>}/>
           </Routes>
         </HashRouter>

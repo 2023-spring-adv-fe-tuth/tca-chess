@@ -4,9 +4,11 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import './styles.css';
+import { useNavigate } from 'react-router-dom';
 
 function GameinPlay() {
 
+    const nav = useNavigate();
     return(
     <>
         <Container fluid className="container">
@@ -161,15 +163,15 @@ function GameinPlay() {
             </Row>  
             <Row className="row">
                 <Col className="col">
-                    <Button variant="secondary">Player One Won</Button>
+                    <Button variant="secondary" onClick={() => nav(-1)}>Player One Won</Button>
                 </Col>
                 <Col className="col">
-                    <Button variant="secondary">Opponent Won</Button>
+                    <Button variant="secondary" onClick={() => nav(-1)}>Opponent Won</Button>
                 </Col>
             </Row>   
             <Row className="row">
                 <Col className="col">
-                    <Button variant="secondary">Draw</Button>
+                    <Button variant="secondary" onClick={() => nav(-1)}>Draw</Button>
                 </Col>
             </Row>         
         </Container>

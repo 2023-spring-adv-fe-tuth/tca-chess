@@ -4,11 +4,12 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
-
+import { useNavigate } from 'react-router-dom';
 
 
 function Home() {
 
+    const nav = useNavigate();
   return (
         <>
         <Container fluid className="container">
@@ -48,7 +49,7 @@ function Home() {
                             />
                         </Form.Group>
                         
-                          <button>
+                          <button type='submit' onClick={() => nav("/GameinPlay")}>
                             Start Game
                           </button> 
                     </Form>
