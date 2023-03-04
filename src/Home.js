@@ -7,9 +7,9 @@ import Container from 'react-bootstrap/Container';
 import { useNavigate } from 'react-router-dom';
 
 
-function Home({firstMove}) {
+function Home({firstMove, firstPiece}) {
 
-    console.log(firstMove);
+    console.log(firstMove, firstPiece);
     
     const nav = useNavigate();
   return (
