@@ -6,8 +6,15 @@ import Button from 'react-bootstrap/Button';
 import './styles.css';
 import { useNavigate } from 'react-router-dom';
 
-function GameinPlay() {
+/* a3, b3, c3, d3, e3,f3,g3,h3
 
+a4, b4, c4, d4, e4,f4,g4,h4
+
+Ka3, Kc3, Kf3, Kh3*/
+
+function GameinPlay({username, white,  black}) {
+
+    console.log(username);
     const nav = useNavigate();
     return(
     <>
@@ -15,7 +22,9 @@ function GameinPlay() {
 
             <Row className="row">
                 <Col className="col">
-                <h1>Title of Player</h1>
+                <h1>{username}</h1>
+                <h2>{white && 'white'}</h2>
+                <h2>{black && 'black'}</h2>
                 </Col>
             </Row>
 
@@ -26,14 +35,122 @@ function GameinPlay() {
                         <Form.Group>
                             <Form.Check 
                                 type="checkbox"
-                                id={`E4`}
-                                label={`E4`}
+                                id={`a3`}
+                                label={`a3`}
                             />
 
                             <Form.Check
                                 type="checkbox"
-                                label={`B4`}
-                                id={`B4`}
+                                label={`b3`}
+                                id={`b3`}
+                            />
+                            
+                            <Form.Check
+                                type="checkbox"
+                                label={`c3`}
+                                id={`c3`}
+                            />
+                            
+                            <Form.Check
+                                type="checkbox"
+                                label={`d3`}
+                                id={`d3`}
+                            />
+                            
+                            <Form.Check
+                                type="checkbox"
+                                label={`e3`}
+                                id={`e3`}
+                            />
+                            
+                            <Form.Check
+                                type="checkbox"
+                                label={`f3`}
+                                id={`f3`}
+                            />
+                            
+                            <Form.Check
+                                type="checkbox"
+                                label={`g3`}
+                                id={`g3`}
+                            />
+                            
+                            <Form.Check
+                                type="checkbox"
+                                label={`h3`}
+                                id={`h3`}
+                            />
+                            
+                            <Form.Check
+                                type="checkbox"
+                                label={`a4`}
+                                id={`a4`}
+                            />
+                            
+                            <Form.Check
+                                type="checkbox"
+                                label={`b4`}
+                                id={`b4`}
+                            />
+                            
+                            <Form.Check
+                                type="checkbox"
+                                label={`c4`}
+                                id={`c4`}
+                            />
+                            
+                            <Form.Check
+                                type="checkbox"
+                                label={`d4`}
+                                id={`d4`}
+                            />
+                            
+                            <Form.Check
+                                type="checkbox"
+                                label={`e4`}
+                                id={`e4`}
+                            />
+                            
+                            <Form.Check
+                                type="checkbox"
+                                label={`f4`}
+                                id={`f4`}
+                            />
+                            
+                            <Form.Check
+                                type="checkbox"
+                                label={`g4`}
+                                id={`g4`}
+                            />
+                            
+                            <Form.Check
+                                type="checkbox"
+                                label={`h4`}
+                                id={`h4`}
+                            />
+                            
+                            <Form.Check
+                                type="checkbox"
+                                label={`Ka3`}
+                                id={`Ka3`}
+                            />
+                            
+                            <Form.Check
+                                type="checkbox"
+                                label={`Kc3`}
+                                id={`Kc3`}
+                            />
+                            
+                            <Form.Check
+                                type="checkbox"
+                                label={`Kf3`}
+                                id={`Kf3`}
+                            />
+                            
+                            <Form.Check
+                                type="checkbox"
+                                label={`Kh3`}
+                                id={`Kh3`}
                             />
                         </Form.Group>
                     </Form>

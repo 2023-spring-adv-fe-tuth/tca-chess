@@ -8,31 +8,21 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 
-function Home({firstMove, firstPiece}) {
+function Home({firstMove, firstPiece, username, white, black, setUserName, setWhite, setBlack}) {
     
     const nav = useNavigate();
-    const responseBody = {username: "", white: "", black: ""};
-    const [username, setUserName] = useState("");
-    const [white, setWhite] = useState("False");
-    const [black, setBlack] = useState("False");
 
-    const onSubmitHandler = (event) => {
-        event.preventDefault();
-        responseBody.username = username;
-        responseBody.white = white;
-        responseBody.black = black;
-        console.log(JSON.stringify(responseBody));
-        nav("/GameinPlay");
+    const [localWhite, setLocalWhite] = useState(false);
+
+    const onSubmitHandler = () =>  {
+        setWhite(localWhite);
+        setBlack(!localWhite);
+        nav('GameinPlay');
     }
+
   return (
         <>
         <Container fluid className="container">
-
-            <Row className="row">
-                <Col className="col">
-                <h1>Title of Player</h1>
-                </Col>
-            </Row>
 
             <Row className="row">
                 <Col className="col">
@@ -53,8 +43,8 @@ function Home({firstMove, firstPiece}) {
                                 label={`White`}
                                 name="white"
                                 id="white"
-                                value={white}
-                                onChange={(event) => setWhite(event.target.value = true)}
+                                checked={localWhite}
+                                onChange={(event) => { console.log(event); setLocalWhite(event.target.checked)}}
                             />
 
                             <Form.Check
@@ -62,8 +52,8 @@ function Home({firstMove, firstPiece}) {
                                 label={`Black`}
                                 name="black"
                                 id="black"
-                                value={black}
-                                onChange={(event) => setBlack(event.target.value = true)}
+                                checked={!localWhite}
+                                onChange={(event) => setLocalWhite(!event.target.checked)}
                             />
                         </Form.Group>
                         
