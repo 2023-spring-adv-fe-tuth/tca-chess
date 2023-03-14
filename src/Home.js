@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 
-function Home({firstMove, firstPiece, username, white, black, setUserName, setWhite, setBlack}) {
+function Home({username, setUserName, setWhite, setBlack, numOfChecks}) {
     
     const nav = useNavigate();
 
@@ -44,7 +44,7 @@ function Home({firstMove, firstPiece, username, white, black, setUserName, setWh
                                 name="white"
                                 id="white"
                                 checked={localWhite}
-                                onChange={(event) => { console.log(event); setLocalWhite(event.target.checked)}}
+                                onChange={(event) => setLocalWhite(event.target.checked)}
                             />
 
                             <Form.Check
@@ -75,8 +75,8 @@ function Home({firstMove, firstPiece, username, white, black, setUserName, setWh
 
             <Row className="row">
                 <Col className="col">
-                    <h2>Most common first move</h2>
-                    <p>{firstMove}</p>
+                    <h2>Number of Times Your King went into Check</h2>
+                    <p>{numOfChecks}</p>
                 </Col>
             </Row>
 
@@ -84,7 +84,7 @@ function Home({firstMove, firstPiece, username, white, black, setUserName, setWh
             <Row className="row">
                 <Col className="col">
                     <h2>Most common first piece captured</h2>
-                    <p>{firstPiece}</p>
+                    <p></p>
                 </Col>
             </Row>
 
