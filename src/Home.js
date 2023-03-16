@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 
-function Home({username, setUserName, setWhite, setBlack, numOfChecks}) {
+function Home({username, setUserName, setWhite, setBlack, numOfChecks, current}) {
     
     const nav = useNavigate();
 
@@ -83,8 +83,8 @@ function Home({username, setUserName, setWhite, setBlack, numOfChecks}) {
             
             <Row className="row">
                 <Col className="col">
-                    <h2>Most common first piece captured</h2>
-                    <p></p>
+                    <h2>Total time you spent playing:</h2>
+                    <p>{current}</p>
                 </Col>
             </Row>
 

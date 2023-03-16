@@ -32,6 +32,7 @@ function App() {
 
   //For game in play form data
   const[numOfChecks, saveNumberOfChecks] = useState('');
+  const [current, setCurrentTime] = useState([]);
 
 
   return (
@@ -46,12 +47,14 @@ function App() {
               black={black}
               setBlack={setBlack}
               numOfChecks={numOfChecks}
+              current={current}
               />}/>
             <Route path="/GameinPlay" element={<GameinPlay 
             username={username} 
             white={white} 
             black={black} 
             saveNumberOfChecks={saveNumberOfChecks}
+            setCurrentTime={setCurrentTime}
             />}/>
           </Routes>
         </HashRouter>

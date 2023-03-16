@@ -6,18 +6,51 @@ import Button from 'react-bootstrap/Button';
 import './styles.css';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 
-function GameinPlay({username, white,  black, saveNumberOfChecks}) {
+function GameinPlay({username, white,  black, saveNumberOfChecks, setCurrentTime}) {
 
     const nav = useNavigate();
 
     const [localCheck, setLocalCheck] = useState(0);
-
+    
     const onSubmitHandler = () =>  {
         saveNumberOfChecks(localCheck);
         nav('/');
     }
+
+    const [timer, setTimer] = useState(0); // 25 minutes
+    const [start, setStart] = useState(false);
+    const firstStart = useRef(true);
+    const tick = useRef();
+
+    useEffect(() => {
+        if (firstStart.current) {
+        console.log("first render, don't run useEffect for timer");
+        firstStart.current = !firstStart.current;
+        return;
+        }
+
+        console.log("subsequent renders");
+        console.log(start);
+        if (start === true) {
+        tick.current = setInterval(() => {
+            setTimer((timer) => timer + 1);
+        }, 1000);
+        } else {
+        setCurrentTime(document.getElementById('timer').innerText);
+        clearInterval(tick.current);
+        }
+
+        return () => clearInterval(tick.current);
+
+    }, [setCurrentTime, start]);
+
+    const toggleStart = (event) => {
+        event.preventDefault();
+        setStart(!start);
+    };
 
     return(
     <>
@@ -49,6 +82,14 @@ function GameinPlay({username, white,  black, saveNumberOfChecks}) {
                                 value={localCheck}
                                 onClick={() => setLocalCheck(localCheck -1)}
                             > -1 </button>
+                        </Form.Group>
+                        <Form.Group>
+                            <h2 id="timer">{timer}</h2>
+                           <div className="startDiv">
+                                <button className="startBut" onClick={toggleStart}>
+                                {!start ? "START" : "STOP"}
+                                </button>
+                            </div>
                         </Form.Group>
                         <Row className="row">
                             <Col className="col">
