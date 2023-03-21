@@ -69,7 +69,7 @@ function Home({username, setUserName, setWhite, setBlack, numOfChecks, current})
 
             <Row className="row">
                 <Col className="col">
-                <h1>Leaderboard</h1>
+                <h1>Stats</h1>
                 </Col>
             </Row>
 
@@ -88,11 +88,6 @@ function Home({username, setUserName, setWhite, setBlack, numOfChecks, current})
                 </Col>
             </Row>
 
-            <Row className="row">
-                <Col className="col">
-                    <h2>Number of Games ending in a draw</h2>
-                </Col>
-            </Row>
         </Container>
       </>
     );

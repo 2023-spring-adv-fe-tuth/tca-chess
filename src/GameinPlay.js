@@ -27,12 +27,10 @@ function GameinPlay({username, white,  black, saveNumberOfChecks, setCurrentTime
 
     useEffect(() => {
         if (firstStart.current) {
-        console.log("first render, don't run useEffect for timer");
         firstStart.current = !firstStart.current;
         return;
         }
-
-        console.log("subsequent renders");
+        
         console.log(start);
         if (start === true) {
         tick.current = setInterval(() => {
@@ -84,16 +82,17 @@ function GameinPlay({username, white,  black, saveNumberOfChecks, setCurrentTime
                             > -1 </button>
                         </Form.Group>
                         <Form.Group>
+                            <h2>Start and stop the timer during your turn</h2>
                             <h2 id="timer">{timer}</h2>
                            <div className="startDiv">
-                                <button className="startBut" onClick={toggleStart}>
+                                <button className="startButton" onClick={toggleStart}>
                                 {!start ? "START" : "STOP"}
                                 </button>
                             </div>
                         </Form.Group>
                         <Row className="row">
                             <Col className="col">
-                                <Button variant="secondary" type="submit"  onClick={() => nav(-1)}>Player One Won</Button>
+                                <Button variant="secondary" type="submit"  onClick={() => nav(-1)}>I won</Button>
                             </Col>
                             <Col className="col">
                                 <Button variant="secondary" type="submit" onClick={() => nav(-1)}>Opponent Won</Button>

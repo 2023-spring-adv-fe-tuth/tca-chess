@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/tca-chess/static/css/main.47742797.css",
+    "main.js": "/tca-chess/static/js/main.2ec700b1.js",
+    "static/js/787.ae9bcb94.chunk.js": "/tca-chess/static/js/787.ae9bcb94.chunk.js",
+    "index.html": "/tca-chess/index.html",
+    "main.47742797.css.map": "/tca-chess/static/css/main.47742797.css.map",
+    "main.2ec700b1.js.map": "/tca-chess/static/js/main.2ec700b1.js.map",
+    "787.ae9bcb94.chunk.js.map": "/tca-chess/static/js/787.ae9bcb94.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.47742797.css",
+    "static/js/main.2ec700b1.js"
+  ]
+}
