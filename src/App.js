@@ -3,7 +3,7 @@ import './styles.css';
 import GameinPlay from './GameinPlay';
 import Home from './Home';
 import { HashRouter, Routes, Route } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
 //hard coded data
@@ -33,6 +33,20 @@ function App() {
   //For game in play form data
   const[numOfChecks, saveNumberOfChecks] = useState('');
   const [current, setCurrentTime] = useState([]);
+  const [ave, calculateAverage] = useState();
+  const [totalTurns, setTotalTurns] = useState();
+
+  useEffect(() => {
+  //Runs on every render
+  //And any time any dependency value changes
+  let totalTime = '';
+  totalTime += current;
+  let numberTotalTime = parseInt(totalTime);
+  let numberTotalTurns = parseInt(totalTurns);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  calculateAverage(numberTotalTime/numberTotalTurns);
+}, [current, totalTurns, ave]);
+
 
 
   return (
@@ -48,6 +62,7 @@ function App() {
               setBlack={setBlack}
               numOfChecks={numOfChecks}
               current={current}
+              ave={ave}
               />}/>
             <Route path="/GameinPlay" element={<GameinPlay 
             username={username} 
@@ -55,6 +70,7 @@ function App() {
             black={black} 
             saveNumberOfChecks={saveNumberOfChecks}
             setCurrentTime={setCurrentTime}
+            setTotalTurns={setTotalTurns}
             />}/>
           </Routes>
         </HashRouter>

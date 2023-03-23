@@ -9,7 +9,7 @@ import { useState } from 'react';
 import { useEffect, useRef } from 'react';
 
 
-function GameinPlay({username, white,  black, saveNumberOfChecks, setCurrentTime}) {
+function GameinPlay({username, white,  black, saveNumberOfChecks, setCurrentTime, setTotalTurns}) {
 
     const nav = useNavigate();
 
@@ -20,10 +20,12 @@ function GameinPlay({username, white,  black, saveNumberOfChecks, setCurrentTime
         nav('/');
     }
 
-    const [timer, setTimer] = useState(0); // 25 minutes
+    const [timer, setTimer] = useState(0);
+    const [numOfTurns, setNumOfTurns] = useState(0);
     const [start, setStart] = useState(false);
     const firstStart = useRef(true);
     const tick = useRef();
+
 
     useEffect(() => {
         if (firstStart.current) {
@@ -31,19 +33,20 @@ function GameinPlay({username, white,  black, saveNumberOfChecks, setCurrentTime
         return;
         }
         
-        console.log(start);
         if (start === true) {
         tick.current = setInterval(() => {
             setTimer((timer) => timer + 1);
         }, 1000);
+        setNumOfTurns((numOfTurns) => numOfTurns + 1 );
         } else {
         setCurrentTime(document.getElementById('timer').innerText);
+        setTotalTurns(document.getElementById('numOfTurns').innerText);
         clearInterval(tick.current);
         }
 
         return () => clearInterval(tick.current);
 
-    }, [setCurrentTime, start]);
+    }, [setCurrentTime, start, setTotalTurns]);
 
     const toggleStart = (event) => {
         event.preventDefault();
@@ -57,8 +60,8 @@ function GameinPlay({username, white,  black, saveNumberOfChecks, setCurrentTime
             <Row className="row">
                 <Col className="col">
                 <h1>{username}</h1>
-                <h2>{white && 'white'}</h2>
-                <h2>{black && 'black'}</h2>
+                <h2>{white && 'Playing as: white'}</h2>
+                <h2>{ black && 'Playing as: black'}</h2>
                 </Col>
             </Row>
 
@@ -84,6 +87,7 @@ function GameinPlay({username, white,  black, saveNumberOfChecks, setCurrentTime
                         <Form.Group>
                             <h2>Start and stop the timer during your turn</h2>
                             <h2 id="timer">{timer}</h2>
+                            <p id="numOfTurns">{numOfTurns}</p>
                            <div className="startDiv">
                                 <button className="startButton" onClick={toggleStart}>
                                 {!start ? "START" : "STOP"}

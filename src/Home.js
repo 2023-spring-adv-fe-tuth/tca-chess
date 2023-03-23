@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 
-function Home({username, setUserName, setWhite, setBlack, numOfChecks, current}) {
+function Home({username, setUserName, setWhite, setBlack, numOfChecks, current, ave}) {
     
     const nav = useNavigate();
 
@@ -85,6 +85,7 @@ function Home({username, setUserName, setWhite, setBlack, numOfChecks, current})
                 <Col className="col">
                     <h2>Total time you spent playing:</h2>
                     <p>{current}</p>
+                    <p>Average Time of turn: {ave}</p>
                 </Col>
             </Row>
 
