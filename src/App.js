@@ -63,6 +63,7 @@ function App() {
               numOfChecks={numOfChecks}
               current={current}
               ave={ave}
+
               />}/>
             <Route path="/GameinPlay" element={<GameinPlay 
             username={username} 

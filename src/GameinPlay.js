@@ -60,13 +60,26 @@ function GameinPlay({username, white,  black, saveNumberOfChecks, setCurrentTime
             <Row className="row">
                 <Col className="col">
                 <h1>{username}</h1>
-                <h2>{white && 'Playing as: white'}</h2>
-                <h2>{ black && 'Playing as: black'}</h2>
+                <h1 className="delay">{white && 'Playing as: white'}</h1>
+                <h1 className="delay">{ black && 'Playing as: black'}</h1>
                 </Col>
             </Row>
 
             <Row className="row">
                 <Col className="col">
+
+                <Form.Group>
+                        <h2>Start and stop the timer during your turn</h2>
+                        <h2 id="timer">{timer}</h2>
+                        <p>Number of Turns:</p>
+                        <p id="numOfTurns">{numOfTurns}</p>
+                        <div className="startDiv">
+                            <button className="startButton" onClick={toggleStart}>
+                            {!start ? "START" : "STOP"}
+                            </button>
+                        </div>
+                    </Form.Group>
+
                     <h2>Number of Times Your King went into Check</h2>
                     <Form onSubmit={onSubmitHandler}>
                         <Form.Group>
@@ -84,19 +97,10 @@ function GameinPlay({username, white,  black, saveNumberOfChecks, setCurrentTime
                                 onClick={() => setLocalCheck(localCheck -1)}
                             > -1 </button>
                         </Form.Group>
-                        <Form.Group>
-                            <h2>Start and stop the timer during your turn</h2>
-                            <h2 id="timer">{timer}</h2>
-                            <p id="numOfTurns">{numOfTurns}</p>
-                           <div className="startDiv">
-                                <button className="startButton" onClick={toggleStart}>
-                                {!start ? "START" : "STOP"}
-                                </button>
-                            </div>
-                        </Form.Group>
+
                         <Row className="row">
                             <Col className="col">
-                                <Button variant="secondary" type="submit"  onClick={() => nav(-1)}>I won</Button>
+                                <Button variant="secondary" type="submit"  onClick={() =>  nav(-1) }>I won</Button>
                             </Col>
                             <Col className="col">
                                 <Button variant="secondary" type="submit" onClick={() => nav(-1)}>Opponent Won</Button>
@@ -107,6 +111,7 @@ function GameinPlay({username, white,  black, saveNumberOfChecks, setCurrentTime
                                 <Button variant="secondary" type="submit" onClick={() => nav(-1)}>Draw</Button>
                             </Col>
                         </Row>   
+                        
                     </Form>
                 </Col>
             </Row>    

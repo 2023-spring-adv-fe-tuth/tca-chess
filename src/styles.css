@@ -4,4 +4,57 @@
     border: 2px solid black;
 }
 .row{margin: 1em;}
+/*chess tracker and stats */
+h1 {
+    font-size: large;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    animation: slidein 2s forwards; 
+}
+
+@keyframes slidein {
+    from {
+            margin-left: 100%;
+        }
+
+        to {
+            margin-left: 0%;
+        }
+}
+.delay {
+    font-size: large;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    animation: delay 2s 2s forwards;
+}
+
+@keyframes delay {
+    from {
+        margin-left: 100%;
+    }
+
+    to {
+        margin-left: 0%;
+    }
+}
+/* New Game */
+#newGame {
+    background-color: #964B00;
+    margin-left: 7em;
+    border: 2px solid black;
+}
+#form{
+    visibility: hidden;
+    margin-top: 2em;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#username {
+    margin-left: 1em;
+}
+#startGame {
+    border: 2px solid black;
+    color: green;
+}
+
+
 

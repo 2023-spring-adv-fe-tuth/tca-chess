@@ -20,16 +20,26 @@ function Home({username, setUserName, setWhite, setBlack, numOfChecks, current, 
         nav('GameinPlay');
     }
 
+    const showForm = () => {
+        const myForm = document.getElementById('form');
+        myForm.style.visibility = "visible";
+    }
+
   return (
         <>
         <Container fluid className="container">
 
             <Row className="row">
                 <Col className="col">
-                    <h2>New Game</h2>
-                    <Form onSubmit={onSubmitHandler}>
+                    <Row className="row">
+                        <Col className="col">
+                        <h1>Chess Tracker</h1>
+                        </Col>
+                    </Row>
+                    <button id="newGame" onClick={showForm}>New Game</button>
+                    <Form onSubmit={onSubmitHandler} id="form">
                         <Form.Group>
-                            <Form.Label>Who's Playing?</Form.Label>
+                            <Form.Label>Name:</Form.Label>
                             <input 
                                 type="text" 
                                 name="username" 
@@ -57,7 +67,7 @@ function Home({username, setUserName, setWhite, setBlack, numOfChecks, current, 
                             />
                         </Form.Group>
                         
-                          <button type='submit'>
+                          <button type='submit' id="startGame">
                             Start Game
                           </button> 
                     </Form>
@@ -65,7 +75,7 @@ function Home({username, setUserName, setWhite, setBlack, numOfChecks, current, 
             </Row>
         </Container>
         
-        <Container fluid className="container">
+        <Container fluid className="container" id="stats">
 
             <Row className="row">
                 <Col className="col">
