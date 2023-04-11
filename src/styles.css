@@ -1,6 +1,6 @@
 .container{
     margin: 0;
-    background: linear-gradient(to right,#ffe9c5, #964B00,#ffe9c5);
+    background-color: rgb(196, 164, 132);
     border: 2px solid black;
 }
 .row{margin: 1em;}
@@ -20,22 +20,6 @@ h1 {
         to {
             margin-left: 0%;
         }
-}
-.delay {
-    font-size: large;
-    font-weight: bold;
-    font-family: 'Courier New', Courier, monospace;
-    animation: delay 2s 2s forwards;
-}
-
-@keyframes delay {
-    from {
-        margin-left: 100%;
-    }
-
-    to {
-        margin-left: 0%;
-    }
 }
 /* New Game */
 #newGame {

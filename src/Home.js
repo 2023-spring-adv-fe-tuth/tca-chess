@@ -85,8 +85,9 @@ function Home({username, setUserName, setWhite, setBlack, numOfChecks, current, 
 
             <Row className="row">
                 <Col className="col">
-                    <h2>Number of Times Your King went into Check</h2>
+                    <h2>Number of Times Your King went into Check:</h2>
                     <p>{numOfChecks}</p>
+                    <hr></hr>
                 </Col>
             </Row>
 
@@ -95,7 +96,10 @@ function Home({username, setUserName, setWhite, setBlack, numOfChecks, current, 
                 <Col className="col">
                     <h2>Total time you spent playing:</h2>
                     <p>{current}</p>
-                    <p>Average Time of turn: {ave}</p>
+                    <hr></hr>
+                    <h2>Average Time of turn:</h2>
+                    <p>{ave}</p>
+                    <hr></hr>
                 </Col>
             </Row>
 

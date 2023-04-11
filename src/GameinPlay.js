@@ -60,8 +60,8 @@ function GameinPlay({username, white,  black, saveNumberOfChecks, setCurrentTime
             <Row className="row">
                 <Col className="col">
                 <h1>{username}</h1>
-                <h1 className="delay">{white && 'Playing as: white'}</h1>
-                <h1 className="delay">{ black && 'Playing as: black'}</h1>
+                <h1>{white && 'Playing as: white'}</h1>
+                <h1>{ black && 'Playing as: black'}</h1>
                 </Col>
             </Row>
 
