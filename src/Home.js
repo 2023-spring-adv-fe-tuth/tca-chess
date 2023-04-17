@@ -36,7 +36,7 @@ function Home({username, setUserName, setWhite, setBlack, numOfChecks, current, 
                         <h1>Chess Tracker</h1>
                         </Col>
                     </Row>
-                    <button id="newGame" onClick={showForm}>New Game</button>
+                    <button className="actionButtons" onClick={showForm}>New Game</button>
                     <Form onSubmit={onSubmitHandler} id="form">
                         <Form.Group>
                             <Form.Label>Name:</Form.Label>

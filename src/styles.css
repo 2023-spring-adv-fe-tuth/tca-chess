@@ -22,7 +22,7 @@ h1 {
         }
 }
 /* New Game */
-#newGame {
+.actionButtons {
     background-color: #964B00;
     margin-left: 7em;
     border: 2px solid black;
@@ -39,6 +39,10 @@ h1 {
     border: 2px solid black;
     color: green;
 }
-
+p{
+    font-size: 2em;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+}
 
 

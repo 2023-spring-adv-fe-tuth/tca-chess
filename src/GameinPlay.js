@@ -2,7 +2,6 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 import './styles.css';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
@@ -82,8 +81,9 @@ function GameinPlay({username, white,  black, saveNumberOfChecks, setCurrentTime
 
                     <h2>Number of Times Your King went into Check</h2>
                     <Form onSubmit={onSubmitHandler}>
-                        <Form.Group>
+                        <Form.Group class="d-flex flex-row justify-content-between align-items-center">
                             <button 
+                            
                                 type="button"
                                 value={localCheck}
                                 onClick={() => setLocalCheck(localCheck +1)}
@@ -92,6 +92,7 @@ function GameinPlay({username, white,  black, saveNumberOfChecks, setCurrentTime
                             <p> {localCheck} </p>
 
                             <button
+                            
                                 type="button"
                                 value={localCheck}
                                 onClick={() => setLocalCheck(localCheck -1)}
@@ -100,15 +101,13 @@ function GameinPlay({username, white,  black, saveNumberOfChecks, setCurrentTime
 
                         <Row className="row">
                             <Col className="col">
-                                <Button variant="secondary" type="submit"  onClick={() =>  nav(-1) }>I won</Button>
+                                <button  className="actionButtons" onClick={() =>  nav(-1) }>I won</button>
                             </Col>
                             <Col className="col">
-                                <Button variant="secondary" type="submit" onClick={() => nav(-1)}>Opponent Won</Button>
-                            </Col>
-                        </Row>   
-                        <Row className="row">
+                                <button className="actionButtons" onClick={() => nav(-1)}>Opponent Won</button>
+                            </Col>  
                             <Col className="col">
-                                <Button variant="secondary" type="submit" onClick={() => nav(-1)}>Draw</Button>
+                                <button  className="actionButtons" onClick={() => nav(-1)}>Draw</button>
                             </Col>
                         </Row>   
                         
