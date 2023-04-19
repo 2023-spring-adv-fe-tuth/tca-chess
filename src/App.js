@@ -4,14 +4,8 @@ import GameinPlay from './GameinPlay';
 import Home from './Home';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import localforage from 'localforage';
 
-
-//hard coded data
-/*const mostCommonFirstMove = ['a3', 'b3', 'c3', 'd3', 'e3','f3','g3','h3',
-'a4', 'b4', 'c4', 'd4', 'e4', 'e4', 'f4','g4','h4',
-'Ka3', 'Kc3', 'Kf3', 'Kh3']; */
-
-//const mostCommonFirstPiece = ['pawn', 'knight', 'bishop', 'pawn', 'pawn'];
 
 
 function App() {
@@ -25,29 +19,41 @@ function App() {
   //   return hashmapReduced;
   //}
 
-  //For Home Component form data
+    //For Home Component form data
     const [username, setUserName] = useState("");
     const [white, setWhite] = useState(false);
     const [black, setBlack] = useState(false);
+    const [previousResult, setPreviousResult] = useState();
 
-  //For game in play form data
-  const[numOfChecks, saveNumberOfChecks] = useState('');
-  const [current, setCurrentTime] = useState([]);
-  const [ave, calculateAverage] = useState();
-  const [totalTurns, setTotalTurns] = useState();
+    //For game in play form data
+    const[numOfChecks, saveNumberOfChecks] = useState('');
+    const [current, setCurrentTime] = useState([]);
+    const [ave, calculateAverage] = useState();
+    const [totalTurns, setTotalTurns] = useState();
+    const [endGame, setEndOfGame] = useState();
 
-  useEffect(() => {
-  //Runs on every render
-  //And any time any dependency value changes
-  let totalTime = '';
-  totalTime += current;
-  let numberTotalTime = parseInt(totalTime);
-  let numberTotalTurns = parseInt(totalTurns);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  calculateAverage(numberTotalTime/numberTotalTurns);
-}, [current, totalTurns, ave]);
+    useEffect(() => {
+    //Runs on every render
+    //And any time any dependency value changes
+    let totalTime = '';
+    totalTime += current;
+    let numberTotalTime = parseInt(totalTime);
+    let numberTotalTurns = parseInt(totalTurns);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    calculateAverage(numberTotalTime/numberTotalTurns);
+    }, [current, totalTurns, ave]);
 
 
+    useEffect( () => {
+      const loadGameResult = async() => {
+        try{
+          setPreviousResult(await localforage.getItem("gameResult"));
+        } catch (err) {
+          console.error(err);
+        }
+      }
+      loadGameResult();
+    }, [endGame])
 
   return (
         <>
@@ -63,7 +69,7 @@ function App() {
               numOfChecks={numOfChecks}
               current={current}
               ave={ave}
-
+              previousResult={previousResult}
               />}/>
             <Route path="/GameinPlay" element={<GameinPlay 
             username={username} 
@@ -72,6 +78,8 @@ function App() {
             saveNumberOfChecks={saveNumberOfChecks}
             setCurrentTime={setCurrentTime}
             setTotalTurns={setTotalTurns}
+            endGame={endGame}
+            setEndOfGame={setEndOfGame}
             />}/>
           </Routes>
         </HashRouter>

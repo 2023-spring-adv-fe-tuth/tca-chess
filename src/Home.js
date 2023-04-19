@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 
-function Home({username, setUserName, setWhite, setBlack, numOfChecks, current, ave}) {
+function Home({username, setUserName, setWhite, setBlack, numOfChecks, current, ave, previousResult}) {
     
     const nav = useNavigate();
 
@@ -80,6 +80,14 @@ function Home({username, setUserName, setWhite, setBlack, numOfChecks, current, 
             <Row className="row">
                 <Col className="col">
                 <h1>Stats</h1>
+                </Col>
+            </Row>
+
+            <Row className="row">
+                <Col className="col">
+                    <h2>Your Last Game Ended as:</h2>
+                    <p>{previousResult}</p>
+                    <hr></hr>
                 </Col>
             </Row>
 

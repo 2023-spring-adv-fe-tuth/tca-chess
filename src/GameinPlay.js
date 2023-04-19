@@ -6,13 +6,33 @@ import './styles.css';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect, useRef } from 'react';
+import localforage from 'localforage';
 
-
-function GameinPlay({username, white,  black, saveNumberOfChecks, setCurrentTime, setTotalTurns}) {
+function GameinPlay({username, white,  black, saveNumberOfChecks, setCurrentTime, setTotalTurns, endGame, setEndOfGame}) {
 
     const nav = useNavigate();
 
     const [localCheck, setLocalCheck] = useState(0);
+
+    const endOfGame = async(result) => {
+        
+        if (result === 1) {
+            endGame = 'I Won';
+        } else if (result === 2) {
+            endGame = 'Opponent Won';
+        } else if (result === 3) {
+            endGame = 'Draw';
+        }
+        console.log('end game equals:', endGame);
+        try{
+           setEndOfGame(await localforage.setItem(
+                "gameResult",
+                endGame
+            ))
+        } catch (err){
+            console.error(err);
+        }
+    };
     
     const onSubmitHandler = () =>  {
         saveNumberOfChecks(localCheck);
@@ -101,13 +121,13 @@ function GameinPlay({username, white,  black, saveNumberOfChecks, setCurrentTime
 
                         <Row className="row">
                             <Col className="col">
-                                <button  className="actionButtons" onClick={() =>  nav(-1) }>I won</button>
+                                <button  className="actionButtons" onClick={() => {endOfGame(1);}}>I won</button>
                             </Col>
                             <Col className="col">
-                                <button className="actionButtons" onClick={() => nav(-1)}>Opponent Won</button>
+                                <button className="actionButtons" onClick={() => {endOfGame(2);}}>Opponent Won</button>
                             </Col>  
                             <Col className="col">
-                                <button  className="actionButtons" onClick={() => nav(-1)}>Draw</button>
+                                <button  className="actionButtons" onClick={() => {endOfGame(3);}}>Draw</button>
                             </Col>
                         </Row>   
                         
