@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { useEffect, useRef } from 'react';
 import localforage from 'localforage';
 
-function GameinPlay({username, white,  black, saveNumberOfChecks, setCurrentTime, setTotalTurns, endGame, setEndOfGame}) {
+function GameinPlay({username, white,  black, saveNumberOfChecks, setCurrentTime, setTotalTurns, endGame, setEndOfGame, addGameResult}) {
 
     const nav = useNavigate();
 
@@ -32,6 +32,9 @@ function GameinPlay({username, white,  black, saveNumberOfChecks, setCurrentTime
         } catch (err){
             console.error(err);
         }
+        addGameResult({
+           gameResult: endGame
+        });
     };
     
     const onSubmitHandler = () =>  {
