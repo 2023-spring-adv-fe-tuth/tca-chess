@@ -47,8 +47,8 @@ function App() {
 					const ek = String(await localforage.getItem("emailKey")) ?? "";
 					if (ek.length > 0) {
 						const resultsFromCloud = await loadGamesFromCloud(
-							ek
-							, "tca-chess"
+							ek,
+							"tca-chess"
 						);
 						if (!ignore) {
 							setGameResults(resultsFromCloud);
@@ -73,20 +73,21 @@ function App() {
 	);
 
   const addGameResult = (r) => {
-
+    console.log(emailKeySaved);
 		// Save the game result to the cloud.
 		saveGameToCloud(
 			emailKeySaved
 			, "tca-chess"
-			, r.end
+			, new Date().toISOString
 			, r
-		);
-
+    );
+    console.log(saveGameToCloud);
 		// Optimistically update the lifted app state.
 		setGameResults([
 			...results
 			, r
-		]);
+    ]);
+
 	};
 
   const saveEmailKey = async () => {
@@ -157,6 +158,7 @@ function App() {
               current={current}
               ave={ave}
               previousResult={previousResult}
+              results={results}
               />}/>
             <Route path="/GameinPlay" element={<GameinPlay 
             username={username} 

@@ -23,7 +23,6 @@ function GameinPlay({username, white,  black, saveNumberOfChecks, setCurrentTime
         } else if (result === 3) {
             endGame = 'Draw';
         }
-        console.log('end game equals:', endGame);
         try{
            setEndOfGame(await localforage.setItem(
                 "gameResult",
@@ -32,9 +31,9 @@ function GameinPlay({username, white,  black, saveNumberOfChecks, setCurrentTime
         } catch (err){
             console.error(err);
         }
-        addGameResult({
-           gameResult: endGame
-        });
+        addGameResult(
+            {gameResult: endGame}
+        );
     };
     
     const onSubmitHandler = () =>  {

@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 
-function Home({username, setUserName, setWhite, setBlack, numOfChecks, current, ave, previousResult}) {
+function Home({username, setUserName, setWhite, setBlack, numOfChecks, current, ave, previousResult, results}) {
     
     const nav = useNavigate();
 
@@ -24,6 +24,8 @@ function Home({username, setUserName, setWhite, setBlack, numOfChecks, current, 
         const myForm = document.getElementById('form');
         myForm.style.visibility = "visible";
     }
+
+    console.log(results);
 
   return (
         <>
@@ -85,8 +87,12 @@ function Home({username, setUserName, setWhite, setBlack, numOfChecks, current, 
 
             <Row className="row">
                 <Col className="col">
-                    <h2>Your Last Game Ended as:</h2>
-                    <p>{previousResult}</p>
+                    <h2>Game History:</h2>
+                    <ul>{
+                        results.map((result) => {
+                            return <li key={result}>{result.gameResult}</li>
+                        })
+                    }</ul>
                     <hr></hr>
                 </Col>
             </Row>
