@@ -78,7 +78,7 @@ function App() {
 		saveGameToCloud(
 			emailKeySaved
 			, "tca-chess"
-			, new Date().toISOString
+			, new Date().toISOString()
 			, r
     );
     console.log(saveGameToCloud);
