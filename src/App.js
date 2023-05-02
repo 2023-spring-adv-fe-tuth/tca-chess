@@ -7,26 +7,16 @@ import { useState, useEffect } from 'react';
 import localforage from 'localforage';
 import { saveGameToCloud, loadGamesFromCloud } from './tca-cloud-api';
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 
-
 function App() {
-
-  //   const calculateFirstPiece = (mostCommonFirstPiece) => {
-  //   const hashmap = mostCommonFirstPiece.reduce( (acc, val) => {
-  //       acc[val] = (acc[val] || 0 ) + 1
-  //       return acc
-  //   },{});
-  //   const hashmapReduced = Object.keys(hashmap).reduce((a, b) => hashmap[a] > hashmap[b] ? a : b);
-  //   return hashmapReduced;
-  //}
 
   //For Home Component form data
   const [username, setUserName] = useState("");
   const [white, setWhite] = useState(false);
   const [black, setBlack] = useState(false);
   const [previousResult, setPreviousResult] = useState();
+  const [winPercentage, setWinPercentage] = useState();
 
   //For game in play form data
   const[numOfChecks, saveNumberOfChecks] = useState('');
@@ -127,22 +117,48 @@ function App() {
     loadGameResult();
   },[previousResult])
 
+
+  let initialValue = 0;
+
+  useEffect( () => {
+    const calculateWinPercentage = async() => {
+      try{
+          await loadGamesFromCloud();
+          let totalWins = results.reduce(function(acc, currVal) {
+          if (currVal.gameResult === 'I Won') {
+            return acc += 1;
+          } else if (currVal.gameResult !== 'I Won') {
+            return acc;
+          }
+          },initialValue);
+
+          let totalGames = results.length;
+          setWinPercentage((totalWins/totalGames) * 100);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    calculateWinPercentage();
+  }, [results, initialValue])
+
+
   return (
         <>
         <Container fluid className="container">
-          <Form.Group>
-            <Form.Label>Email address</Form.Label>
+          <Form.Group id="email">
+            <Form.Label>Currently logged in as:</Form.Label>
             <Form.Control 
               type="text" 
+              id="emailInput"
               placeholder="Enter new player name"
               value={emailKeyInput} 
               onChange={(e) => setEmailKeyInput(e.target.value)}
             />
-            <Button
+            <button
               onClick={saveEmailKey}
             >
-              Save
-            </Button>
+              Save New Email Address
+            </button>
         </Form.Group>
       </Container>
         <HashRouter>
@@ -159,6 +175,7 @@ function App() {
               ave={ave}
               previousResult={previousResult}
               results={results}
+              winPercentage={winPercentage}
               />}/>
             <Route path="/GameinPlay" element={<GameinPlay 
             username={username} 

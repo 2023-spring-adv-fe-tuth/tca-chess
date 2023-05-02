@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 
-function Home({username, setUserName, setWhite, setBlack, numOfChecks, current, ave, previousResult, results}) {
+function Home({username, setUserName, setWhite, setBlack, numOfChecks, current, ave, previousResult, results, winPercentage}) {
     
     const nav = useNavigate();
 
@@ -93,6 +93,14 @@ function Home({username, setUserName, setWhite, setBlack, numOfChecks, current, 
                             return <li key={result}>{result.gameResult}</li>
                         })
                     }</ul>
+                    <hr></hr>
+                </Col>
+            </Row>
+
+            <Row className="row">
+                <Col className="col">
+                    <h2>Your Winning Percentage:</h2>
+                    <p>{winPercentage}%</p>
                     <hr></hr>
                 </Col>
             </Row>
