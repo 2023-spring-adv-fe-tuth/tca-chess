@@ -133,7 +133,7 @@ function App() {
           },initialValue);
 
           let totalGames = results.length;
-          setWinPercentage((totalWins/totalGames) * 100);
+          setWinPercentage(((totalWins/totalGames) * 100).toFixed(2));
       } catch (err) {
         console.log(err);
       }
