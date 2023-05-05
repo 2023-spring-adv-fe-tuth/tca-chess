@@ -2,7 +2,7 @@
   "name": "tca-chess",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://2023-spring-adv-fe-tuth.github.io/tca-chess",
+  "homepage": "https://2023-spring-adv-fe-tuth/tca-chess",
   "dependencies": {
     "@aws-sdk/util-dynamodb": "^3.316.0",
     "@testing-library/jest-dom": "^5.16.5",
